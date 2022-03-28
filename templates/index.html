@@ -37,18 +37,21 @@
     {% if orders|length < 1 %}
     <h4 style="text-align: center">There are no orders. Create one below!</h4>
     {% else %}
-    <table>
+    <div style="text-align: center; justify-content: center;">
+
+      <table style="text-align: center; justify-content: center; border: 3px solid #000000;  margin-left: auto;
+      margin-right: auto; margin-bottom: 20px;" cellspacing="15" >
         <tr>
-            <th>View</th>
-            <th>Name</th>
-            <th>Material</th>
-            <th>Quantity</th>
+          <th>View</th>
+          <th>Name</th>
+          <th>Material</th>
+          <th>Quantity</th>
             <th>Created On</th>
             <th>Edit</th>
         </tr>
         {% for order in orders %}
-            <tr>
-                <td><a href="/view/{{order.id}}">View</a></td>
+        <tr>
+          <td><a href="/view/{{order.id}}">View</a></td>
                 <td>{{ order.name }}</td>
                 <td>{{ order.material }}</td>
                 <td>{{ order.quantity }}</td>
@@ -58,14 +61,15 @@
                     <a href="/delete/{{order.id}}">Delete</a>
                     <br>
                     <a href="/update/{{order.id}}">Update</a>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
+                  </td>
+                </tr>
+                {% endfor %}
+              </table>
+            </div>
     {% endif %}
 
     <div class="form">
-        <center><form action="/" method="POST">
+        <center><form action="/" method="POST" style="padding: 15px;">
             Name: <input type="text" name="name" id="name" placeholder="Turbo Motors" ><br/>
             Material:<input type="text" name="material" id="materail" placeholder="Aluminium" ><br/>
             Quantity: <input type="number" name="quantity" id="quantity" placeholder="100" ><br/>
